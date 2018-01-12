@@ -27,7 +27,7 @@ $(function() {
          */
          it('should be able to link the url', function() {
             allFeeds.forEach(function(element) {
-                expect(element.name).toBeDefined();
+                expect(element.url).toBeDefined();
                 expect(element.url).not.toBe('');
             });
          });
