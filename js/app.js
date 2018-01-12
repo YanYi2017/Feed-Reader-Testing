@@ -6,19 +6,7 @@
 
 // 所有的名字和链接都是真实可用的
 var allFeeds = [
-    {
-        name: '优达学城 Blog',
-        url: 'http://blog.udacity.com/feed'
-    }, {
-        name: '腾讯CDC',
-        url: 'http://cdc.tencent.com/feed/'
-    }, {
-        name: 'Matrix67(数学爱好者)',
-        url: 'http://www.matrix67.com/blog/feed'
-    }, {
-        name: 'TechCrunch中国',
-        url: 'http://techcrunch.cn/feed/'
-    }
+
 ];
 
 /* 这个函数负责启动我们的应用，Google Feed Reader API 会被异步加载
