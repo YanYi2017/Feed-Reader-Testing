@@ -50,8 +50,15 @@ $(function() {
          * 写一个测试用例保证菜单元素默认是隐藏的。你需要分析 html 和 css
          * 来搞清楚我们是怎么实现隐藏/展示菜单元素的。
          */
+         var menuIcon, body;
+
+         beforeEach(function() {
+            menuIcon = $('.menu-icon-link'),
+            body = $('body');
+         });
+
          it('should be able to make sure the menu element is hidden by default', function() {
-            expect($('body').hasClass('menu-hidden')).toBeTruthy();
+            expect(body.hasClass('menu-hidden')).toBeTruthy();
          });
 
          /* TODO:
@@ -59,6 +66,12 @@ $(function() {
           * 测试应该包含两个 expectation ： 党点击图标的时候菜单是否显示，
           * 再次点击的时候是否隐藏。
           */
+          it('should change visibility when the menu icon is clicked', function() {
+            menuIcon.trigger('click');
+            expect(body.hasClass('menu-hidden')).toBeFalsy();
+            menuIcon.trigger('click');
+            expect(body.hasClass('menu-hidden')).toBeTruthy();
+          });
     });
 
 
