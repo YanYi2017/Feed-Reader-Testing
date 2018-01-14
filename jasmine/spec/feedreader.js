@@ -84,16 +84,30 @@ $(function() {
          * 记住 loadFeed() 函数是异步的所以这个而是应该使用 Jasmine 的 beforeEach
          * 和异步的 done() 函数。
          */
-         it('should normally call loadFeed function', function() {
+         beforeEach(function(done) {
+            loadFeed(0, function() {
+                done();
+            });
+         });
 
+         it('should normally call loadFeed function', function(done) {
+            expect($(".feed .entry").length).not.toEqual(0);
+            done();
          });
     });
 
 
     /* TODO: 写一个叫做 "New Feed Selection" 的测试用例 */
 
-        /* TODO:
+
+    describe('New Feed Selection', function() {
+         /* TODO:
          * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
          * 记住，loadFeed() 函数是异步的。
          */
+         it('should be able to change content when load a new source', function() {
+
+         }) ;
+    });
+
 }());
