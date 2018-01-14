@@ -105,9 +105,18 @@ $(function() {
          * 写一个测试保证当用 loadFeed 函数加载一个新源的时候内容会真的改变。
          * 记住，loadFeed() 函数是异步的。
          */
-         it('should be able to change content when load a new source', function() {
+         beforeEach(function(done) {
+            loadFeed(0, function() {
+                initHTML = $(".feed").html();
+                loadFeed(1, function() {
+                    done();
+                })
+            });
+         }, 50000);
 
-         }) ;
+         it("should be able to change content", function() {
+            expect($(".feed").html()).toEqual(initHTML);
+         });
     });
 
 }());
