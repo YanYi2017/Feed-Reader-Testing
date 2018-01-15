@@ -16,6 +16,7 @@ $(function() {
          * 比如你把 app.js 里面的 allFeeds 变量变成一个空的数组然后刷新
          * 页面看看会发生什么。
         */
+        var regExUrl = /^((ht|f)tps?):\/\/([\w\-]+(\.[\w\-]+)*\/)*[\w\-]+(\.[\w\-]+)*\/?(\?([\w\-\.,@?^=%&:\/~\+#]*)+)?/;
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
@@ -27,6 +28,7 @@ $(function() {
          */
          it('should be able to link the url', function() {
             emptyDetection("url");
+            regExDetection();
          });
 
         /* TODO:
@@ -40,6 +42,12 @@ $(function() {
             allFeeds.forEach(function(element) {
                 expect(element.name).toBeDefined();
                 expect(element.name).not.toBe('');
+            });
+         }
+
+         function regExDetection() {
+            allFeeds.forEach(function(element) {
+                expect(element.url).toMatch(regExUrl);
             });
          }
     });
@@ -91,7 +99,7 @@ $(function() {
             });
          });
 
-         it('should normally call loadFeed function', function(done) {
+         it('should normally call loadFeed function', function(done) {//为什么可以删除done和done()
             expect($(".feed .entry").length).not.toEqual(0);
             done();
          });
