@@ -26,21 +26,22 @@ $(function() {
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
          it('should be able to link the url', function() {
-            allFeeds.forEach(function(element) {
-                expect(element.url).toBeDefined();
-                expect(element.url).not.toBe('');
-            });
+            emptyDetection("url");
          });
 
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
          it('are guaranteed to have name fields and the name are not empty', function() {
+            emptyDetection("name");
+         });
+
+         function emptyDetection(name) { //为什么只能用name命名
             allFeeds.forEach(function(element) {
                 expect(element.name).toBeDefined();
                 expect(element.name).not.toBe('');
             });
-         });
+         }
     });
 
 
